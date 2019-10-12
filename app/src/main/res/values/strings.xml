@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">proContextTestWork</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Type name</string>
+    <string name="more_button">More</string>
+    <string name="please_wait_download">Downloading Data</string>
+    <string name="enter_new_name">Enter new name</string>
+    <string name="rename_item">Rename item</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+</resources>
