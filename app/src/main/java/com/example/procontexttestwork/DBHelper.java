@@ -92,7 +92,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }.execute();
     }
 
-
     private void addPhotographsArrayInDB(ArrayList<Photographer> photographers){
         ContentValues values = new ContentValues();
         SQLiteDatabase db = getWritableDatabase();
@@ -112,7 +111,6 @@ public class DBHelper extends SQLiteOpenHelper {
             values.put(ALBUM_PHOTOGRAPHER_ID, a.getPhotographerId());
             db.insert(ALBUMS_TABLE_NAME, null, values);
         }
-
     }
 
     private void addPhotoArrayInDB(ArrayList<Photo> photos){

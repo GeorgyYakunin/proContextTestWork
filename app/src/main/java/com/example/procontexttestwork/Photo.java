@@ -4,7 +4,6 @@ public class Photo extends JsonInfoClass{
     String url;
     int id;
     int albumId;
-    String name;
 
     public Photo (String thumbnailUrl, int id, String name, int albumId){
         super(id, name);

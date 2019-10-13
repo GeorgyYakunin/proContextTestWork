@@ -1,28 +1,16 @@
 package com.example.procontexttestwork;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-
-import org.json.JSONException;
 
 public class PhotographersInfoActivity extends AppCompatActivity implements Observer {
     private static final String TAG = "PhotographersInfoActivity";
@@ -55,9 +43,7 @@ public class PhotographersInfoActivity extends AppCompatActivity implements Obse
         mAdapter = new RVAdapter(mDBHelper.getPhotographerArray(), this);
         PhotographersRecyclerView.setAdapter(mAdapter);
         View v1 = findViewById(R.id.download_placeholder);
-        View v2 = findViewById(R.id.download_placeholder_layout);
         v1.setVisibility(View.GONE);
-        v2.setVisibility(View.GONE);
     }
 
     @SuppressLint("LongLogTag")
@@ -76,12 +62,10 @@ public class PhotographersInfoActivity extends AppCompatActivity implements Obse
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
             case R.id.delete_data_button:
                 mDBHelper.deleteData();
-                mAdapter.notifyDataSetChanged();
-//                recreate();
+                mAdapter.deleteAllData();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

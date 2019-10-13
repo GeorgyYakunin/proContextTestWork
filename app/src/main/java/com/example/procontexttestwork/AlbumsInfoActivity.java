@@ -1,23 +1,15 @@
 package com.example.procontexttestwork;
 
-import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import org.json.JSONException;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class AlbumsInfoActivity extends AppCompatActivity {
     private RecyclerView AlbumsRecyclerView;
@@ -26,7 +18,6 @@ public class AlbumsInfoActivity extends AppCompatActivity {
     private int photographerId;
     private DBHelper mDBHelper;
     private static final String TAG = "AlbumsInfoActivity";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +30,11 @@ public class AlbumsInfoActivity extends AppCompatActivity {
         initRecyclerView();
     }
 
-
-
     private void initRecyclerView() {
         AlbumsRecyclerView = findViewById(R.id.rvAlbums);
         AlbumsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new RVAdapter(mDBHelper.getAlbumArray(photographerId), this);
         AlbumsRecyclerView.setAdapter(mAdapter);
-
     }
 
     @Override
@@ -76,7 +64,6 @@ public class AlbumsInfoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_search) {
-
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -91,4 +78,4 @@ public class AlbumsInfoActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    }
+}

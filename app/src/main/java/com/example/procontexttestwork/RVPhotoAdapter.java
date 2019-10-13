@@ -31,9 +31,6 @@ public class RVPhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         array = a;
         this.mContext = mContext;
         arraySize = array.size();
-
-
-
     }
 
     private class PhotoViewHolder extends RecyclerView.ViewHolder {

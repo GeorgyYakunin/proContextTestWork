@@ -3,27 +3,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-        xmlns:tools = "http://schemas.android.com/tools"
-        android:id="@+id/download_placeholder_layout"
-        android:layout_width= "match_parent"
-        android:layout_height= "match_parent"
-        android:layout_margin= "16dp"
-        android:visibility="visible"
-        android:gravity="center_vertical"
-        tools:context= ".MainActivity" >
         <TextView
-            android:id= "@+id/download_placeholder"
-            android:layout_width= "250dp"
-            android:layout_height= "250dp"
-            android:layout_centerInParent= "true"
-            android:indeterminate= "false"
-            android:gravity="center"
+            android:id="@+id/download_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="150dp"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:indeterminate="false"
             android:text="@string/please_wait_download"
             android:visibility="visible" />
-    </RelativeLayout>
+
+        <TextView
+            android:id="@+id/no_data_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="150dp"
+            android:gravity="center_vertical"
+            android:indeterminate="false"
+            android:text="@string/no_data"
+            android:visibility="gone" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvPhotographers"
         android:layout_width="match_parent"

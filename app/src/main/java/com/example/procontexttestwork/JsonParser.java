@@ -1,15 +1,9 @@
 package com.example.procontexttestwork;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class JsonParser {
     private static final String TAG = "JsonParser";
