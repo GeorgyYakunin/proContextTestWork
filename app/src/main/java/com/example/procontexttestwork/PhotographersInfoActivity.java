@@ -80,7 +80,8 @@ public class PhotographersInfoActivity extends AppCompatActivity implements Obse
         switch (item.getItemId()) {
             case R.id.delete_data_button:
                 mDBHelper.deleteData();
-                recreate();
+                mAdapter.notifyDataSetChanged();
+//                recreate();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

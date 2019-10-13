@@ -39,11 +39,6 @@ public class HTTPClient {
 
         String response = convertStreamToString(in);
         ArrayList<Photographer> photographers = jsonParser.getPhotographers(response);
-        for (Photographer p : photographers){
-            Log.e(TAG, p.getName());
-        }
-
-
         return photographers;
     }
 

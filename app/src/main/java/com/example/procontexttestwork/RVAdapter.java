@@ -35,18 +35,20 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.mViewHolder> imple
 
     public RVAdapter(ArrayList<? extends JsonInfoClass> a, Context mContext){
         array = a;
-        if(a.get(0) instanceof Photographer){
-            onClickActivity = AlbumsInfoActivity.class;
-            ArrayType = Photographer.class;
+        if (array == null) {
+            Log.e(TAG, "Данные отсутствуют");
         }
-
-        else{
-            onClickActivity = GalleryActivity.class;
-            ArrayType = Album.class;
+        else {
+            if (array.get(0) instanceof Photographer) {
+                onClickActivity = AlbumsInfoActivity.class;
+                ArrayType = Photographer.class;
+            } else {
+                onClickActivity = GalleryActivity.class;
+                ArrayType = Album.class;
+            }
+            arrayFiltered = (ArrayList<JsonInfoClass>) array;
+            this.mContext = mContext;
         }
-
-        arrayFiltered = (ArrayList<JsonInfoClass>) array;
-        this.mContext = mContext;
     }
 
     @Override
@@ -54,15 +56,18 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.mViewHolder> imple
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
-                String charString = charSequence.toString();
-                if (charString.isEmpty()) {
+                int sequenseSize = charSequence.length();
+                String searchString = charSequence.toString().toLowerCase();
+                if (sequenseSize == 0) {
                     arrayFiltered = (ArrayList<JsonInfoClass>) array;
                 } else {
                     ArrayList<JsonInfoClass> arrayFilteredList = new ArrayList<>();
                     for (JsonInfoClass row : array) {
-                        if (row.getName().toLowerCase().contains(charString.toLowerCase())) {
-                            arrayFilteredList.add(row);
-                        }
+                        String rowString = row.getName().substring(0,sequenseSize).toLowerCase();
+                        Log.e(TAG, rowString + " " + rowString.equals(searchString));
+                            if (rowString.equals(searchString)) {
+                                arrayFilteredList.add(row);
+                            }
                     }
                     arrayFiltered = arrayFilteredList;
                 }
@@ -99,7 +104,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.mViewHolder> imple
     @Override
     public void onBindViewHolder(@NonNull final mViewHolder holder, final int i) {
 
-        final JsonInfoClass item = array.get(i);
+        final JsonInfoClass item = arrayFiltered.get(i);
         final int ID = item.getId();
         holder.nameTextView.setText(item.getName());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
